@@ -1,0 +1,98 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<style type="text/css">
+
+	@media (max-width: 768px) { 
+		.right-column{
+			margin-left: 0px;
+		}
+	}
+
+	@media (min-width: 768px) { 
+		.right-column{
+			margin-left: 20px;
+		}
+	}
+
+	.blog-post-container{
+		margin-bottom: 20px;
+		width: 100%;
+	}
+	.create-post-bar{
+		background-color: rgb(167, 219, 253);
+		margin-bottom:20px;
+	}
+
+	.left-column{
+		padding:0px;
+	}
+
+	.right-column{
+		padding:0px;
+	}
+	.lead{
+		font-size: 17px;
+	}
+</style>
+
+
+<body>
+    <div class= "row">
+		<div class= "col-sm4">
+			<h3 class="text-center alert alert-info">Add Required IDPs Data in Below: </h3> <br>
+			<form class="text-center" action="" method="POST">
+				{% csrf_token %}
+				{{form.as_p}}
+
+				<input type="submit" class="btn btn-success" value="Add">
+			</form>
+		</div>
+	<div class="col-sm-7 offset-1">
+		<h4 class = "text-center alert alert-info">Show IDP information</h4>
+		{%if stu %}
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Name</th>
+						<th scope="col">Age</th>
+						<th scope="col">City</th>
+						<th scope="col">Needs</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for st in stu%}
+					<tr>						
+						<th scope="row">{{st.id}}</th>
+						<td>{{st.name}}</td>
+						<td>{{st.age}}</td>
+						<td>{{st.city}}</td>
+						<td>{{st.needs}}</td>
+						<td>
+							<a href="{% url 'updatedata' st.id %}" class ="btn btn-warning btn-sm">Edit</a>
+							<form action="{% url 'deletedata' st.id %}" class = "d-inline" method="POST"> {% csrf_token%}
+								<input type="submit" class = "btn btn-danger" value="Delete">
+							</form>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+
+			</table>
+		
+		{% else %}
+		<h4 class = "text-center alert alert-info"> No record Found</h4>
+		{% endif %}	
+	</div>
+	</div>
+    
+    
+
+
+</body>
+{% endblock content %}
