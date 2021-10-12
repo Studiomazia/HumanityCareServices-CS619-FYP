@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'contact/contact.css' %}">
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+</head>
+<body>
+{% include 'snippets/base_css.html' %}
+{% include 'snippets/header.html' %}
+<div class="col-sm-4">
+    
+    <h1 style="color:blue;">Contact Us </h1>
+    <form class = "" action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit" color: #fff>
+    </form>
+</div>
+{% include 'snippets/footer.html' %}
+
+</body>
+
+</html>
