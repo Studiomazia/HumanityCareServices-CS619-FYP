@@ -41,9 +41,7 @@ INSTALLED_APPS = [
     'account',
     'blog',
     'idpdata',
-    'contact',
-    'IDP_details',
-    
+    'contact',    
 
     # django apps
     'django.contrib.admin',
