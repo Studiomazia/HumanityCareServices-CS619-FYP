@@ -32,9 +32,7 @@ from idpdata.views import (
     delete_data,update_data
     
 )
-from IDP_details.views import (
-	 add_show,
-)
+
 from personal.views import (
 	home_screen_view,
 )
